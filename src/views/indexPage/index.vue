@@ -17,7 +17,7 @@
                       required
                       placeholder="請輸入姓名"
                   ></b-form-input>
-                  <b-form-invalid-feedback>姓名為必填項</b-form-invalid-feedback>
+                  <b-form-invalid-feedback>姓名為必填項!</b-form-invalid-feedback>
                 </b-form-group>
               </div>
               <div class="col-12 col-md-6 col-lg-4 ">
