@@ -1,0 +1,87 @@
+@use "sass:math";
+@use "./functions" as *;
+
+
+// font
+$font-normal: to-rem(16px);
+
+$font-size: (
+        tiny: math.div($font-normal, 1.6), // 10px
+        mini: math.div($font-normal, 1.333), // 12px
+        small: math.div($font-normal, 1.142857), // 14px
+        normal: $font-normal, // 16px
+        weight: math.div($font-normal, 0.8888889), // 18px
+        big: math.div($font-normal, 0.8), // 20px
+        large: math.div($font-normal, 0.6666667), // 24px
+        x-large: math.div($font-normal, 0.5714286), // 28px
+        display-1: math.div($font-normal, 0.4705882), // 34px
+        display-2: math.div($font-normal, 0.4), // 40px
+        display-3: math.div($font-normal, 0.3333333), // 48px
+        display-4: math.div($font-normal, 0.2666667), // 60px
+        display-5: math.div($font-normal, 0.1666667), // 96px
+);
+
+// z-index
+$z-index: (
+        zero,
+        base,
+        fixed,
+        modal
+);
+
+$border-radius-root: 4px !default;
+
+$rounded: () !default;
+$rounded: map-deep-merge(
+                (
+                        0: 0,
+                        'sm': math.div($border-radius-root, 2),
+                        null: $border-radius-root,
+                        'lg': $border-radius-root * 2,
+                        'xl': $border-radius-root * 6,
+                        'pill': 9999px,
+                        'circle': 50%
+                ),
+                $rounded
+);
+
+$border-size: () !default;
+$border-size: map-deep-merge(
+                (
+                        0: 0,
+                        'sm': math.div($border-radius-root, 8) solid,
+                        null: math.div($border-radius-root, 4) solid,
+                        'md': math.div($border-radius-root, 2) solid,
+                        'lg': $border-radius-root solid,
+                        'xl': $border-radius-root * 5 solid
+                ),
+                $border-size
+);
+
+$sideBarWidth: 210px;
+
+$font-weights: (
+  'thin': 100,
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'normal': 600,
+  'bold': 700,
+  'black': 900
+);
+
+$spacer: 4px !default;
+
+$spacers: () !default;
+@if (type-of($spacers) == list) {
+  @for $i from 0 through 12 {
+    $spacers: map-merge($spacers, ($i: $spacer * $i))
+  }
+}
+
+$negative-spacers: () !default;
+@if (type-of($negative-spacers) == list) {
+  @for $i from 1 through 12 {
+    $negative-spacers: map-merge($negative-spacers, ("n" + $i: -$spacer * $i))
+  }
+}
